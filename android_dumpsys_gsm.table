@@ -1,0 +1,15 @@
+table_name("android_dumpsys_gsm")
+description("List of the BTS connected.")
+schema([
+    Column("timeBalise", TEXT, "Hour activity", index=True),
+    Column("mLac", TEXT, "Status mLac"),
+    Column("mCid", TEXT, "Status mCid"),
+    Column("mMcc", TEXT, "Status mMcc"),
+    Column("mMnc", TEXT, "Status mMncc"),
+    Column("mUarfcn", TEXT, "Status mUarfcn"),
+    Column("mPsc", TEXT, "Status mPsc", hidden=True),
+    Column("mAlphaLong", TEXT, "Operator"),
+    Column("mAlphaShort", TEXT, "Operator", hidden=True),
+
+])
+implementation("system/linux/android_dumpsys_gsm@genAndroidDumpsysGsm")
