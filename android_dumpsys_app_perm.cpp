@@ -28,7 +28,7 @@ namespace tables {
 
 using namespace std;
 
-Status genPackage5(Row& r, QueryData& results) 
+Status genPackageDumpAppPerm(Row& r, QueryData& results) 
    {
    	int startPackage = 0;
 	pid_t pid = fork();
@@ -106,7 +106,7 @@ QueryData genAndroidDumpsysAppPerm(QueryContext& context) {
     QueryData results;
     	Row r;
     
-    	auto s = genPackage5(r, results);
+    	auto s = genPackageDumpAppPerm(r, results);
 	if (!s.ok()) {
       	VLOG(1) << "Fail " << s.getMessage();
     	}
