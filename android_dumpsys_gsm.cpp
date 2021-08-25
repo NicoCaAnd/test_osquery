@@ -7,11 +7,8 @@
  * SPDX-License-Identifier: (Apache-2.0 OR GPL-2.0-only)
  */
 
-#include <boost/filesystem.hpp>
-#include <boost/algorithm/string/trim.hpp>
-#include <boost/property_tree/xml_parser.hpp>
+#include <boost/filesystem.hpp>			//Need to check the libraries (perhaps some are useless
 #include <osquery/filesystem/filesystem.h>
-#include <boost/foreach.hpp>
 #include <osquery/core/core.h>
 #include <osquery/core/tables.h>
 #include <osquery/logger/logger.h>
@@ -49,11 +46,11 @@ Status genPackage(Row& r, QueryData& results)
 	std::string buff = "";
 	if(pid == 0)
 	{
-		FILE *out = freopen("/data/local/tmp/logDump","w",stdout);
+		FILE *out = freopen("/data/local/tmp/logDump","w",stdout);	//redirection of stdout to a log file
 		if (!out)
 			fprintf(stderr,"ERROR freopen: %s", strerror(errno));
 		stdout = out;	
-		if(system("dumpsys telephony.registry")!=0)
+		if(system("dumpsys telephony.registry")!=0)			//calling dumpsys with option
 		{
 			fprintf(stderr,"Error while exec() : %s\n", strerror(errno));
 		}
@@ -73,11 +70,11 @@ Status genPackage(Row& r, QueryData& results)
 				split(line, ' ', vectLine);
 				results.push_back(std::move(r));
 					
-				for(auto i=vectLine.begin();i!=vectLine.end();i++)
+				for(auto i=vectLine.begin();i!=vectLine.end();i++) 
 				{
 					if((*i).find("2021-")!=std::string::npos)
 						
-						r["timeBalise"] = *i;
+						r["timeBalise"] = *i;				//Getting GSM informations
 					else if((*i).find("mLac")!=std::string::npos)
 						{std::string mL = (*i).substr(5);
 						r["mLac"] = mL;}
@@ -103,7 +100,7 @@ Status genPackage(Row& r, QueryData& results)
 						{std::string mAlpS = (*i).substr(12);
 						r["mAlphaShort"] = mAlpS;}
 					else{
-						continue;
+						continue;			//Jump to the next registration
 						}
 				}
 			}
