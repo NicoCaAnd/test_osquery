@@ -8,10 +8,7 @@
  */
 
 #include <boost/filesystem.hpp>
-#include <boost/algorithm/string/trim.hpp>
-#include <boost/property_tree/xml_parser.hpp>
 #include <osquery/filesystem/filesystem.h>
-#include <boost/foreach.hpp>
 #include <osquery/core/core.h>
 #include <osquery/core/tables.h>
 #include <osquery/logger/logger.h>
