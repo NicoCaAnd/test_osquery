@@ -8,10 +8,7 @@
  */
 
 #include <boost/filesystem.hpp>
-#include <boost/algorithm/string/trim.hpp>
-#include <boost/property_tree/xml_parser.hpp>
 #include <osquery/filesystem/filesystem.h>
-#include <boost/foreach.hpp>
 #include <osquery/core/core.h>
 #include <osquery/core/tables.h>
 #include <osquery/logger/logger.h>
@@ -31,32 +28,31 @@ namespace tables {
 
 using namespace std;
 
-Status genPackage2(Row& r, QueryData& results) 
+Status genPackageDumpsysApp(Row& r, QueryData& results) 
    {
-   	//int fd;
-	pid_t pid = fork();
+
+	pid_t pid = fork();	//Firstly, we call the binary dumpsys and output it to a file in order to read it later
 	std::string buff = "";
 	if(pid == 0)
 	{
-		FILE *out = freopen("/data/local/tmp/logDump","w",stdout);
+		FILE *out = freopen("/data/local/tmp/logDump","w",stdout); //Redirection of stdout toward a file 'logDump' in order to read it
 		if (!out)
 			fprintf(stderr,"ERROR freopen: %s", strerror(errno));
 		stdout = out;	
-		if(system("dumpsys package packages")!=0)
+		if(system("dumpsys package packages")!=0) //Here we call the binary dumpsys with the options 'package packages'
 		{
 			fprintf(stderr,"Error while exec() : %s\n", strerror(errno));
 		}
 	}
 	wait(0);
 	std::ifstream ReadFile("/data/local/tmp/logDump");
-	if(ReadFile)
+	if(ReadFile)	//Reading the log file
 	{
 		std::string line;
-		//boost::trim(line);
-		while(std::getline(ReadFile, line))
+		while(std::getline(ReadFile, line)) //Reading line by line
 		{
-			std::size_t found = line.find("Package [");
-			if(found!=std::string::npos)
+			std::size_t found = line.find("Package ["); 
+			if(found!=std::string::npos) //for each package line found, we need to get the name of the apk
 			{
 				vector<string> vectLine;
 				stringstream ss(line);
@@ -69,25 +65,25 @@ Status genPackage2(Row& r, QueryData& results)
 				{
 					if((*i).find("[")!=std::string::npos)
 					{	
-						(*i).erase(std::remove((*i).begin(),(*i).end(), '['),(*i).end());
-						(*i).erase(std::remove((*i).begin(),(*i).end(), ']'),(*i).end());
-						r["nameApp"] = *i;
+						(*i).erase(std::remove((*i).begin(),(*i).end(), '['),(*i).end()); //remove useless '['
+						(*i).erase(std::remove((*i).begin(),(*i).end(), ']'),(*i).end()); //remove useless ']'
+						r["nameApp"] = *i;						  //we get the name of the apk 
 					}
 				}
 			}
 			else if(line.find("userId=")!=std::string::npos)	
-				r["userIdApp"] = line.substr(11);	
+				r["userIdApp"] = line.substr(11);				//we get the userId
 			else if(line.find("codePath")!=std::string::npos)	
-				r["codePathApp"] = line.substr(13);	
+				r["codePathApp"] = line.substr(13);				//we get the app path
 			else if(line.find("dataDir")!=std::string::npos)	
-				r["dataDirApp"] = line.substr(10);	
+				r["dataDirApp"] = line.substr(10);				//...
 			else if(line.find("firstInstallTime")!=std::string::npos)	
-				r["firstInstallTime"] = line.substr(21);	
-			else if(line.find("lastUpdateTime")!=std::string::npos)	
-				r["lastUpdateTime"] = line.substr(19);
+				r["firstInstallTime"] = line.substr(21);			//...
+			else if(line.find("lastUpdateTime")!=std::string::npos)		
+				r["lastUpdateTime"] = line.substr(19);				//...
 			else if(line.find("apkSigningVersion=")!=std::string::npos)
 				r["sigVersion"] = line.substr(22);
-else if(line.find("android.permission.ACCEPT_HANDOVER")!=std::string::npos)	
+			else if(line.find("android.permission.ACCEPT_HANDOVER")!=std::string::npos)	//Here are the dangerous permissions
 				r["ACCEPT_HANDOVER"] = "True";	
 			else if(line.find("android.pesmission.ACCESS_BACKGROUND_LOCATION")!=std::string::npos)	
 				r["ACCESS_BACKGROUND_LOCATION"] = "True";
@@ -155,8 +151,8 @@ else if(line.find("android.permission.ACCEPT_HANDOVER")!=std::string::npos)
 				r["WRITE_CONTACTS"] = "True";
 			else if(line.find("android.permission.WRITE_EXTERNAL_STORAGE")!=std::string::npos)	
 				r["WRITE_EXTERNAL_STORAGE"] = "True";
-			else if(line.find("android.permission.WAKE_LOCK")!=std::string::npos)	
-				r["WAKE_LOCK"] = "True";
+			else if(line.find("android.permission.WAKE_LOCK")!=std::string::npos)		//we add more permissions, not dangerous for the 
+				r["WAKE_LOCK"] = "True";						//system but interesting for analisys
 			else if(line.find("android.permission.SYSTEM_ALERT_WINDOW")!=std::string::npos)	
 				r["SYSTEM_ALERT_WINDOW"] = "True";
 			else if(line.find("android.permission.FOREGROUND")!=std::string::npos)	
@@ -164,7 +160,7 @@ else if(line.find("android.permission.ACCEPT_HANDOVER")!=std::string::npos)
 			else if(line.find("android.permission.RECEIVE_BOOT_COMPLETED")!=std::string::npos)	
 				r["BOOT_COMPLETED"] = "True";
 			else if(line.find("User 0:")!=std::string::npos)
-				results.push_back(std::move(r));			
+				results.push_back(std::move(r));			//finaly we push the values into the table
 			}
 		}
 	ReadFile.close();
@@ -175,7 +171,7 @@ QueryData genAndroidDumpsysApp(QueryContext& context) {
     QueryData results;
     	Row r;
     
-    	auto s = genPackage2(r, results);
+    	auto s = genPackageDumpsysApp(r, results);
 	if (!s.ok()) {
       	VLOG(1) << "Fail " << s.getMessage();
     	}
