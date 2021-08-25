@@ -28,7 +28,7 @@ namespace tables {
 
 using namespace std;
 
-Status genPackage2(Row& r, QueryData& results) 
+Status genPackageDumpApp(Row& r, QueryData& results) 
    {
    	int startPackage = 0;
 	pid_t pid = fork();
@@ -179,7 +179,7 @@ QueryData genAndroidDumpsysApp(QueryContext& context) {
     QueryData results;
     	Row r;
     
-    	auto s = genPackage2(r, results);
+    	auto s = genPackageDumpApp(r, results);
 	if (!s.ok()) {
       	VLOG(1) << "Fail " << s.getMessage();
     	}
