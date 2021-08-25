@@ -1,0 +1,11 @@
+table_name("android_packages_app")
+description("android general apps from packages.xml .")
+schema([
+    Column("nameApp", TEXT, "Package name", index=True),
+    Column("codePathApp", TEXT, "Package path"),
+    Column("userIdApp", INTEGER, "User Id for the App"),
+    Column("installDate", TEXT, "Installation date of the apk"),
+    Column("lastUpDate", TEXT, "Last update date"),
+    Column("sharedUserIdApp", INTEGER, "Shared User Id", hidden=True),
+])
+implementation("system/linux/android_packages_app@genAndroidPackagesApp")

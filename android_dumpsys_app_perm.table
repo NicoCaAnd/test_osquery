@@ -1,0 +1,7 @@
+table_name("android_dumpsys_app_perm")
+description("android permissions apps table.")
+schema([
+    Column("nameApp", TEXT, "Package name", index=True),
+    Column("permsApp", TEXT, "permissions lists for the app"),
+])
+implementation("system/linux/android_dumpsys_app_perm@genAndroidDumpsysAppPerm")
