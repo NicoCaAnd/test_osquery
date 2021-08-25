@@ -7,7 +7,7 @@
  * SPDX-License-Identifier: (Apache-2.0 OR GPL-2.0-only)
  */
 
-#include <boost/filesystem.hpp>
+#include <boost/filesystem.hpp>				//Need to check the libraries (perhaps some are useless
 #include <osquery/filesystem/filesystem.h>
 #include <osquery/core/core.h>
 #include <osquery/core/tables.h>
