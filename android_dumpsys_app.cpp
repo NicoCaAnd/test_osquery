@@ -39,7 +39,7 @@ Status genPackageDumpApp(Row& r, QueryData& results)
 		if (!out)
 			fprintf(stderr,"ERROR freopen: %s", strerror(errno));
 		stdout = out;	
-		if(system("dumpsys package packages")!=0)	//dumpsys call with option
+		if(system("dumpsys package packages")!=0)	//calling dumpsys with options
 		{
 			fprintf(stderr,"Error while exec() : %s\n", strerror(errno));
 		}
