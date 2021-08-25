@@ -30,27 +30,27 @@ using namespace std;
 
 Status genPackageDumpAppPerm(Row& r, QueryData& results) 
    {
-   	int startPackage = 0;
+   	int startPackage = 0; 
 	pid_t pid = fork();
 	std::string buff = "";
 	if(pid == 0)
 	{
-		FILE *out = freopen("/data/local/tmp/logDump","w",stdout);
+		FILE *out = freopen("/data/local/tmp/logDump","w",stdout); //redirection of stdout to a log file
 		if (!out)
 			fprintf(stderr,"ERROR freopen: %s", strerror(errno));
 		stdout = out;	
-		if(system("dumpsys package packages")!=0)
+		if(system("dumpsys package packages")!=0)			//dumpsys call with option
 		{
 			fprintf(stderr,"Error while exec() : %s\n", strerror(errno));
 		}
 	}
 	wait(0);
 	std::ifstream ReadFile("/data/local/tmp/logDump");
-	if(ReadFile)
+	if(ReadFile)						//Reading the log file
 	{
 		std::string line;
 		//boost::trim(line);
-		while(std::getline(ReadFile, line))
+		while(std::getline(ReadFile, line))		//Reading line by line
 		{
 			std::size_t found = line.find("Package [");
 			if(found!=std::string::npos)
@@ -74,7 +74,7 @@ Status genPackageDumpAppPerm(Row& r, QueryData& results)
 					{	
 						(*i).erase(std::remove((*i).begin(),(*i).end(), '['),(*i).end());
 						(*i).erase(std::remove((*i).begin(),(*i).end(), ']'),(*i).end());
-						r["nameApp"] = *i;
+						r["nameApp"] = *i;			//Getting the apk name
 					}
 				}
 			}	
@@ -92,7 +92,7 @@ Status genPackageDumpAppPerm(Row& r, QueryData& results)
 					if((*i).find("android.permission")!=std::string::npos)
 					{	
 						(*i).erase(std::remove((*i).begin(),(*i).end(), ':'),(*i).end());	
-						r["permsApp"] += (*i).substr(19)+'\n';
+						r["permsApp"] += (*i).substr(19)+'\n';		//Adding permissions
 					}
 				}
 			}
