@@ -7,7 +7,7 @@
  * SPDX-License-Identifier: (Apache-2.0 OR GPL-2.0-only)
  */
 
-#include <boost/filesystem.hpp>
+#include <boost/filesystem.hpp>				//Need to check the libraries (perhaps some are useless
 #include <osquery/filesystem/filesystem.h>
 #include <osquery/core/core.h>
 #include <osquery/core/tables.h>
@@ -35,24 +35,24 @@ Status genPackageDumpApp(Row& r, QueryData& results)
 	std::string buff = "";
 	if(pid == 0)
 	{
-		FILE *out = freopen("/data/local/tmp/logDump","w",stdout);
+		FILE *out = freopen("/data/local/tmp/logDump","w",stdout); //redirection of stdout to a log file
 		if (!out)
 			fprintf(stderr,"ERROR freopen: %s", strerror(errno));
 		stdout = out;	
-		if(system("dumpsys package packages")!=0)
+		if(system("dumpsys package packages")!=0)	//dumpsys call with option
 		{
 			fprintf(stderr,"Error while exec() : %s\n", strerror(errno));
 		}
 	}
 	wait(0);
 	std::ifstream ReadFile("/data/local/tmp/logDump");
-	if(ReadFile)
+	if(ReadFile)						//Reading the log file
 	{
 		std::string line;
 		//boost::trim(line);
-		while(std::getline(ReadFile, line))
+		while(std::getline(ReadFile, line))		//Reading line by line
 		{
-			std::size_t found = line.find("Package [");
+			std::size_t found = line.find("Package [");	
 			if(found!=std::string::npos)
 			{
 				if(startPackage==1)
@@ -74,11 +74,11 @@ Status genPackageDumpApp(Row& r, QueryData& results)
 					{	
 						(*i).erase(std::remove((*i).begin(),(*i).end(), '['),(*i).end());
 						(*i).erase(std::remove((*i).begin(),(*i).end(), ']'),(*i).end());
-						r["nameApp"] = *i;
+						r["nameApp"] = *i;		//Getting the apk name
 					}
 				}
 			}
-			else if(line.find("userId=")!=std::string::npos)	
+			else if(line.find("userId=")!=std::string::npos)	//Getting basic information
 				r["userIdApp"] = line.substr(11);	
 			else if(line.find("codePath")!=std::string::npos)	
 				r["codePathApp"] = line.substr(13);	
@@ -92,7 +92,7 @@ Status genPackageDumpApp(Row& r, QueryData& results)
 				r["sigVersion"] = line.substr(22);
                         else if((line.find(" android.permission.")!=std::string::npos)&&(line.find("granted=true")!=std::string::npos))
 			{
-				if(line.find("ACCEPT_HANDOVER")!=std::string::npos)	
+				if(line.find("ACCEPT_HANDOVER")!=std::string::npos)	//Getting information about dangerous permissions 
 					r["ACCEPT_HANDOVER"] = "True";	
 				else if(line.find("ACCESS_BACKGROUND_LOCATION")!=std::string::npos)	
 					r["ACCESS_BACKGROUND_LOCATION"] = "True";
@@ -160,7 +160,7 @@ Status genPackageDumpApp(Row& r, QueryData& results)
 					r["WRITE_CONTACTS"] = "True";
 				else if(line.find("WRITE_EXTERNAL_STORAGE")!=std::string::npos)	
 					r["WRITE_EXTERNAL_STORAGE"] = "True";
-				else if(line.find("WAKE_LOCK")!=std::string::npos)	
+				else if(line.find("WAKE_LOCK")!=std::string::npos)		//Checking other interesting permission information
 					r["WAKE_LOCK"] = "True";
 				else if(line.find("SYSTEM_ALERT_WINDOW")!=std::string::npos)	
 					r["SYSTEM_ALERT_WINDOW"] = "True";
