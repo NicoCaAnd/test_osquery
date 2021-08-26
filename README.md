@@ -1,13 +1,13 @@
 # Description and Objective
 Osquery is an very interesting tool that collects data from different types of system. 
 Android is not officialy supported yet by the Osquery project.
-I made some changes in the compilation toolchain in order to build a binary that will run above the Android Java layer, at the system level.
+I made some changes in the compilation toolchain in order to build a binary that will run above the Android Java layer, at the system level on the device.
 You read this my Blueprint post for more explanations : https://github.com/osquery/osquery/issues/7144
 Here I put Osquery tables I make, in order to collect data from Android devices for forensic purposes.
 I want to build 3 types of table for Android : 
-- One type will read .xml files on the system to get relevant data ;
-- One type will read .db files on the system to get data ;
-- And an other type will use binaries on the device (as dumpsys or logcat) to get the data ;
+- One type parses .xml files on the system to get relevant data ;
+- One type parses .db files on the system to get the information ;
+- And an other type uses binaries on the device (such as dumpsys or logcat) and parses the output to get the data needed.
 # Contents of this repository
 In this repository, you will find the .cpp and .table files which refer to Osquery tables for Android.
 the .cpp files describe the way the collect of data is done, et and .table files provide the specifications for each .cpp file.
