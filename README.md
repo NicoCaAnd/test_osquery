@@ -2,8 +2,8 @@
 Osquery is an very interesting multiplatform tool that collects data from the system. 
 Android is not officialy supported yet by the Osquery project.
 I made some changes in the compilation toolchain in order to build a binary that will run above the Android Java layer, at the system level on the device.
-You read this my Blueprint post for more explanations : https://github.com/osquery/osquery/issues/7144
-Here I put Osquery tables I make, in order to collect data from Android devices for forensic purposes.
+You will find more details on my Blueprint post : https://github.com/osquery/osquery/issues/7144
+Here, I put Osquery tables I make, in order to collect data from Android devices for forensic purposes.
 I want to build 3 types of table for Android : 
 - One type parses .xml files on the system to get relevant data ;
 - One type parses .db files on the system to get the information ;
