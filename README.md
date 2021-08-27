@@ -13,10 +13,11 @@ You will find more details on my Blueprint post : https://github.com/osquery/osq
 It is important to note that Android **IS NOT officialy supported by the Osquery project**. Here it is just a proposal for **experimental purposes**.
 We noted that, without modification, the binary built runs on a ARM64 Android system (with a recent Linux Kernel version >=4.9), and many GNU-Linux tables are available. But following the Osquery documentation, and studying Android specifications, we can make some specific Android tables.
 
-There are 3 types of usefull tables for Android : 
-- one type parses .xml files on the system to get relevant data ;
-- one type parses .db files on the system to get the information ;
+To get some relevant information on Android system, we made 3 types of tables : 
+- one type parses .xml files ;
+- one type parses .db files ;
 - and an other type uses binaries on the device (such as *dumpsys* or *logcat*) and parses the output to get the data needed.
+-
 # Contents of this repository
 In this repository, you will find the *.cpp* and *.table* files that represent Osquery tables for Android.
 The *.cpp* files describe the way the collection of data is done, et and *.table* files provide the specifications for each *.cpp* file.
