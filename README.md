@@ -11,7 +11,7 @@ All you need is to get Osquery code from its official Github repository, and mak
 You will find more details on my Blueprint post : https://github.com/osquery/osquery/issues/7144
 
 It is important to note that Android **IS NOT officialy supported by the Osquery project**. Here it is just a proposal for **experimental purposes**.
-We noted that, without modification, the binary built runs on a ARM64 Android system (with a recent Linux Kernel version >=4.9), and some GNU-Linux tables are available. But following the Osquery documentation, and studying Android specifications, we can make some specific Android tables.
+We noted that, without modification, the binary built runs on a ARM64 Android system (with a recent Linux Kernel version >=4.9), and many GNU-Linux tables are available. But following the Osquery documentation, and studying Android specifications, we can make some specific Android tables.
 
 There are 3 types of usefull tables for Android : 
 - one type parses .xml files on the system to get relevant data ;
