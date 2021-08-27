@@ -1,16 +1,17 @@
-In this repository, we put some table's files that will allow Osquery to collect data from recent Android ARM64 devices, for experimental forensic purposes.
+In this repository, we put some table's files that will allow Osquery to collect data from recent Android ARM64 devices, for **experimental forensic purposes**.
 
 # Description and objectives
 
 Osquery is a multiplatform tool that collects data from the system. 
 Android is not officialy supported by the Osquery project.
 
->With some changes that have been merged, it is possible to build Osquery as an executable file that will run above the Android Java layer, at the system level on the device. 
->All you need is to get Osquery code from its official Github repository, and make this command when calling CMake :
->`cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
->You will find more details on my Blueprint post : https://github.com/osquery/osquery/issues/7144
->Again, it is important to note that Android IS NOT officialy supported by the Osquery project. Here it is just a proposal for experimental purposes.
->Without any modification, the binary will run on Android system (with a recent Linux Kernel version >4.9).
+With some changes that have been merged, it is possible to build Osquery as an executable file that will run above the Android Java layer, at the system level on the device. 
+All you need is to get Osquery code from its official Github repository, and make this command when calling CMake :
+`cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
+You will find more details on my Blueprint post : https://github.com/osquery/osquery/issues/7144
+
+It is important to note that Android **IS NOT officialy supported by the Osquery project**. Here it is just a proposal for **experimental purposes**.
+Without any modification, the binary will run on Android system (with a recent Linux Kernel version >4.9).
 
 There are 3 types of usefull tables for Android : 
 - one type parses .xml files on the system to get relevant data ;
