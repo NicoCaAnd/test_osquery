@@ -8,7 +8,7 @@ Android is not officialy supported by the Osquery project.
 With some changes that have been merged, it is possible to build Osquery as an executable file that will run above the Android Java layer, at the system level on the device. 
 All you need is to get Osquery code from its official Github repository, and make this command when calling CMake :
 `cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
-You will find more details on my Blueprint post : https://github.com/osquery/osquery/issues/7144
+You will find more details on this Blueprint post : https://github.com/osquery/osquery/issues/7144
 
 It is important to note that Android **IS NOT officialy supported by the Osquery project**. Here it is just a proposal for **experimental purposes**.
 We noted that, without modification, the binary built runs on a ARM64 Android system (with a recent Linux Kernel version >=4.9), and many GNU-Linux tables are available. 
