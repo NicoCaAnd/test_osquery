@@ -1,5 +1,6 @@
 # Description and objectives
-Osquery is an very interesting multiplatform tool that collects data from the system. 
+Osquery is a multiplatform tool that collects data from the system. 
+
 Android is not officialy supported yet by the Osquery project.
 I made some changes in the compilation toolchain in order to build a binary that will run above the Android Java layer, at the system level on the device.
 You will find more details on my Blueprint post : https://github.com/osquery/osquery/issues/7144
