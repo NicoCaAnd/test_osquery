@@ -1,4 +1,4 @@
-In this repository, we put some table's files that will allow Osquery to collect data from recent Android ARM64 devices, for **experimental forensic purposes**.
+This repository deals with Osquery table's files that will allow this tool to collect data from recent Android ARM64 devices, for **experimental forensic purposes**.
 
 # Description and objectives
 
