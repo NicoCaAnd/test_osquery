@@ -7,7 +7,7 @@
  * SPDX-License-Identifier: (Apache-2.0 OR GPL-2.0-only)
  */
 
-#include <boost/filesystem.hpp>				//Need to check the libraries (perhaps some are useless
+#include <boost/filesystem.hpp>				
 #include <osquery/filesystem/filesystem.h>
 #include <osquery/core/core.h>
 #include <osquery/core/tables.h>
@@ -89,7 +89,7 @@ Status genPackageDumpAppPerm(Row& r, QueryData& results)
 				}
 				for(auto i=vectLine2.begin();i!=vectLine2.end();i++)
 				{
-					if((*i).find("android.permission")!=std::string::npos)
+					if((*i).find("android.permission")!=std::string::npos)  //finding permissions
 					{	
 						(*i).erase(std::remove((*i).begin(),(*i).end(), ':'),(*i).end());	
 						r["permsApp"] += (*i).substr(19)+'\n';		//Adding permissions
