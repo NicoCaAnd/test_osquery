@@ -7,7 +7,7 @@ schema([
     Column("codeDirApp", TEXT, "Package dir path", hidden=True),
     Column("firstInstallTime", TEXT, "Installation of the apk"),
     Column("lastUpdateTime", TEXT, "Last update date"),
-    Column("sigVersion", TEXT, "Version of the signature mechanism"),
+    Column("sigVersion", TEXT, "Version of the Android signature mechanism"),
     Column("ACCEPT_HANDOVER", TEXT, "android.permission", hidden=True),
     Column("ACCESS_BACKGROUND_LOCATION", TEXT, "android.permission", hidden=True),
     Column("ACCESS_COARSE_LOCATION", TEXT, "android.permission", hidden=True),
