@@ -7,7 +7,7 @@
  * SPDX-License-Identifier: (Apache-2.0 OR GPL-2.0-only)
  */
 
-#include <boost/filesystem.hpp>				//Need to check the libraries (perhaps some are useless
+#include <boost/filesystem.hpp>				
 #include <osquery/filesystem/filesystem.h>
 #include <osquery/core/core.h>
 #include <osquery/core/tables.h>
@@ -92,7 +92,7 @@ Status genPackageDumpApp(Row& r, QueryData& results)
 				r["sigVersion"] = line.substr(22);
                         else if((line.find(" android.permission.")!=std::string::npos)&&(line.find("granted=true")!=std::string::npos))
 			{
-				if(line.find("ACCEPT_HANDOVER")!=std::string::npos)	//Getting information about dangerous permissions 
+				if(line.find("ACCEPT_HANDOVER")!=std::string::npos)	//Getting information about dangerous permissions delivered by the system 
 					r["ACCEPT_HANDOVER"] = "True";	
 				else if(line.find("ACCESS_BACKGROUND_LOCATION")!=std::string::npos)	
 					r["ACCESS_BACKGROUND_LOCATION"] = "True";
