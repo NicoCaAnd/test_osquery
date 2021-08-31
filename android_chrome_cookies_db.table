@@ -1,0 +1,14 @@
+table_name("android_chrome_cookies_db")
+description("Cookies used by Chrome.")
+schema([
+    Column("creation_utc", BIGINT, "Time"),
+    Column("host_key", TEXT, "URL Website"),
+    Column("value", TEXT, "Full value of the token"),
+    Column("expires_utc", BIGINT, "Time"),
+    Column("is_secure", BIGINT, "True or false"),
+    Column("is_httponly", BIGINT, "True or false"),
+    Column("last_access_utc", BIGINT, "Time"),
+    Column("source_port", BIGINT, "Port"),
+])
+attributes(cacheable=True)
+implementation("@genAndroidChromeCookiesDatabase")

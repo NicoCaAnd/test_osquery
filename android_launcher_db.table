@@ -1,0 +1,13 @@
+table_name("android_launcher_db")
+description("Some info from a database file on Android.")
+schema([
+    Column("_id", BIGINT, "Identifier"),
+    Column("itemType", BIGINT, "Type of item (icon or other)"),
+    Column("componentName", TEXT, "Full name of the component as a part of a App"),
+    Column("title", TEXT, "Name of the App"),
+    Column("screen", TEXT, "Use of the screen or not"),
+    Column("rank", TEXT, "Level during execution"),
+    Column("modified", TEXT, "Time"),
+])
+attributes(cacheable=True)
+implementation("@genAndroidLauncherDatabase")
