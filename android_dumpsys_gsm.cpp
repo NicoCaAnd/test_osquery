@@ -7,7 +7,7 @@
  * SPDX-License-Identifier: (Apache-2.0 OR GPL-2.0-only)
  */
 
-#include <boost/filesystem.hpp>			//Need to check the libraries (perhaps some are useless
+#include <boost/filesystem.hpp>		
 #include <osquery/filesystem/filesystem.h>
 #include <osquery/core/core.h>
 #include <osquery/core/tables.h>
@@ -100,7 +100,7 @@ Status genPackage(Row& r, QueryData& results)
 						{std::string mAlpS = (*i).substr(12);
 						r["mAlphaShort"] = mAlpS;}
 					else{
-						continue;			//Jump to the next registration
+						continue;			//Jump to the next BTS registration
 						}
 				}
 			}
