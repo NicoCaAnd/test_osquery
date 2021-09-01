@@ -1,0 +1,13 @@
+table_name("android_sms_db")
+description("Get SMS infos.")
+schema([
+    Column("_id", BIGINT, "Identifier"),
+    Column("transport_type", TEXT, "Type of transport (SMS or MMS)"),
+    Column("address", TEXT, "Destination"),
+    Column("content", TEXT, "Content of the message"),
+    Column("content_type", TEXT, "Content type (image or URL or text)"),
+    Column("subject", TEXT, "Subject"),
+    Column("date", BIGINT, "Timestamp"),
+])
+attributes(cacheable=True)
+implementation("@genAndroidSmsDatabase")
