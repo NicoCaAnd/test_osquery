@@ -1,5 +1,3 @@
-![Capture_bts_gsm](https://user-images.githubusercontent.com/85172899/131813874-f43dcc57-2a50-47eb-8815-38549b81b745.PNG)
-![Capture_bts_gsm](https://user-images.githubusercontent.com/85172899/131813896-2c6e3fc1-c5da-4064-bfc0-be146f9d6565.PNG)
 This repository deals with Osquery table's files that will permit to collect data from recent Android ARM64 devices, for **experimental forensic purposes**.
 
 # Description and objectives
