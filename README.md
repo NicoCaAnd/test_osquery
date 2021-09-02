@@ -52,6 +52,7 @@ Provides SMS infos reading a database file.
 
 ## android_chrome_cookies_db
 Gives some information about Chrome cookies reading a database file.
+
 ![Capture_chrome_cookies](https://user-images.githubusercontent.com/85172899/131815569-a7613e9d-44b6-423a-bf50-3bcb7de6c982.PNG)
 
 
