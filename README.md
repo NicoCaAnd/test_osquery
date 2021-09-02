@@ -33,15 +33,21 @@ This table also uses dumpsys to get all the permissions for each Android Apps.
 
 ## android_packages_app 
 Reads the file /data/system/packages.xml to provide the list of the Android apps with some information (need to root the device).
+![Capture_packages_xml](https://user-images.githubusercontent.com/85172899/131812759-c9ab5677-8cb2-436d-ac3d-9dbfccaf21f9.PNG)
+
 
 ## android_dumpsys_gsm 
 This table uses dumpsys with the option telephony.registry to provide the list of the Balise Transmitter Station that binded the device.
+![Capture_bts_gsm](https://user-images.githubusercontent.com/85172899/131812706-042767b4-3144-408f-bda6-a6a7ece5c4ac.PNG)
+
 
 ## android_launcher_db
 Provides apps information from a database file.
 
 ## android_sms_db
 Provides SMS infos reading a database file.
+![Capture_sms](https://user-images.githubusercontent.com/85172899/131812835-a3e1fcbc-294e-43a0-b3e9-1c5ad9e10b8b.PNG)
+
 
 ## android_chrome_cookies_db
 Gives some information about Chrome cookies reading a database file.
