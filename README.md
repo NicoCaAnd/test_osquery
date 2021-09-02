@@ -38,7 +38,7 @@ Reads the file /data/system/packages.xml to provide the list of the Android apps
 
 ## android_dumpsys_gsm 
 This table uses dumpsys with the option telephony.registry to provide the list of the Balise Transmitter Station that binded the device.
-![Capture_bts_gsm](https://user-images.githubusercontent.com/85172899/131812706-042767b4-3144-408f-bda6-a6a7ece5c4ac.PNG)
+
 
 
 ## android_launcher_db
