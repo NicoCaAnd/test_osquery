@@ -1,3 +1,5 @@
+![Capture_bts_gsm](https://user-images.githubusercontent.com/85172899/131813874-f43dcc57-2a50-47eb-8815-38549b81b745.PNG)
+![Capture_bts_gsm](https://user-images.githubusercontent.com/85172899/131813896-2c6e3fc1-c5da-4064-bfc0-be146f9d6565.PNG)
 This repository deals with Osquery table's files that will permit to collect data from recent Android ARM64 devices, for **experimental forensic purposes**.
 
 # Description and objectives
@@ -38,8 +40,7 @@ Reads the file /data/system/packages.xml to provide the list of the Android apps
 
 ## android_dumpsys_gsm 
 This table uses dumpsys with the option telephony.registry to provide the list of the Balise Transmitter Station that binded the device.
-
-
+![Capture_bts_gsm](https://user-images.githubusercontent.com/85172899/131813911-cd763d51-44f7-4359-bb85-d51b02fbd55d.PNG)
 
 ## android_launcher_db
 Provides apps information from a database file.
