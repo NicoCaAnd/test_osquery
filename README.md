@@ -18,7 +18,7 @@ To get some relevant information on Android system, we made 3 types of tables :
 - one type parses *.db* files ;
 - and an other type uses binaries on the device (such as *dumpsys* or *logcat*) and parses the output to get the data needed.
 
-To enable the several Android tables we propose, you need to follow the details on this post:https://github.com/osquery/osquery/issues/7144
+You will find more informations on this post: https://github.com/osquery/osquery/issues/7144
 
 # Contents of this repository
 In this repository, you will find the *.cpp* and *.table* files that represent Osquery tables for Android.
