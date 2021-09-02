@@ -32,6 +32,8 @@ Uses the Android binary dumpsys with "package packages" option to get the list o
 
 ## android_dumpsys_app_perms 
 This table also uses dumpsys to get all the permissions for each Android Apps.
+![Capture_app_perms](https://user-images.githubusercontent.com/85172899/131818094-56a75b98-0ea8-4061-a730-5b89af3a2270.PNG)
+
 
 ## android_packages_app 
 Reads the file /data/system/packages.xml to provide the list of the Android apps with some information (need to root the device).
