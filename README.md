@@ -27,6 +27,8 @@ The *.cpp* files describe the way the collection of data is done, et and *.table
 
 ## android_dumpsys_app 
 Uses the Android binary dumpsys with "package packages" option to get the list of Android apps with some information such as : nameApp, signature version, etc. Also you can check if some dangerous permissions are used (such as android.permissions.CAMERA or RECORD_AUDIO).
+![Capture_app](https://user-images.githubusercontent.com/85172899/131817299-826176d2-5eb7-429e-bc6c-e324e7c2fe23.PNG)
+
 
 ## android_dumpsys_app_perms 
 This table also uses dumpsys to get all the permissions for each Android Apps.
