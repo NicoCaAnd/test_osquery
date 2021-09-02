@@ -42,6 +42,8 @@ This table uses dumpsys with the option telephony.registry to provide the list o
 
 ## android_launcher_db
 Provides apps information from a database file.
+![Capture_launcher](https://user-images.githubusercontent.com/85172899/131815595-5b8331a1-4a12-4547-91bd-ca0a600b3eee.PNG)
+
 
 ## android_sms_db
 Provides SMS infos reading a database file.
@@ -50,4 +52,6 @@ Provides SMS infos reading a database file.
 
 ## android_chrome_cookies_db
 Gives some information about Chrome cookies reading a database file.
+![Capture_chrome_cookies](https://user-images.githubusercontent.com/85172899/131815569-a7613e9d-44b6-423a-bf50-3bcb7de6c982.PNG)
+
 
