@@ -23,7 +23,7 @@ To get some relevant information on Android system, we made 3 types of tables :
 Let's say we created a table called androidTable. It means there are 2 files : androidTable.cpp that describes the way the collect is made and androidTable.table that describes the specifications.
 We need first to put these files at the correct locations. The .cpp file needs to be put here : osquery/osquery/tables/system/linux/androidTable. The .table file needs to be put here : osquery/specs/linux.
 Now we must indicate to CMake it will have import these files. Modify osquery/osquery/tables/linux/CMakeLists.txt and add one line for androidTable.cpp in the correct function. Also change osquery/specs/system/CMakeLists.txt and add one line for androidTable.table in the correct function.
-Finally make this command when calling CMake :
+Finally make this CMake command :
 `cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
 You will find more informations on this post: https://github.com/osquery/osquery/issues/7144
 
