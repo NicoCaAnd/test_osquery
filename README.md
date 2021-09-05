@@ -6,8 +6,7 @@ Osquery is a multiplatform tool that collects data from the system.
 Android is not officialy supported by the Osquery project.
 
 With some changes that have been merged, it is possible to build Osquery as an executable file that will run above the Android Java layer, at the system level on the device. 
-All you need is to get Osquery code from its official Github repository, and make this command when calling CMake :
-`cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
+All you need is to get Osquery code from its official Github repository, and add one option when running CMake for the compilation. 
 
 It is important to note that Android **IS NOT officialy supported by the Osquery project**. Here it is just a proposal for **experimental purposes**.
 We noted that, without modification, the binary built runs on a ARM64 Android system (with a recent Linux Kernel version >=4.9), and many GNU-Linux tables are available. 
@@ -18,6 +17,12 @@ To get some relevant information on Android system, we made 3 types of tables :
 - one type parses *.db* files ;
 - and an other type uses binaries on the device (such as *dumpsys* or *logcat*) and parses the output to get the data needed.
 
+# Importing tables
+Let's say we created a table called androidTable. It means there are 2 files : androidTable.cpp and androidTable.table.
+First thing we need to do, is to put these files at the correct locations. The .cpp file needs to be put here : osquery/osquery/tables/system/linux/androidTable. The .table file needs to be put here : osquery/specs/linux.
+Now we must indicate to CMake it will have import these files. Modify osquery/osquery/tables/linux/CMakeLists.txt and add one line for androidTable.cpp in the correct function. Also change osquery/specs/system/CMakeLists.txt and add one line for androidTable.table in the correct function.
+Finally make this command when calling CMake :
+`cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
 You will find more informations on this post: https://github.com/osquery/osquery/issues/7144
 
 # Contents of this repository
