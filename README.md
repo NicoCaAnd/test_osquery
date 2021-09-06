@@ -58,7 +58,7 @@ Gives some information about Chrome cookies reading a database file.
 
 ![Capture_chrome_cookies](https://user-images.githubusercontent.com/85172899/131815569-a7613e9d-44b6-423a-bf50-3bcb7de6c982.PNG)
 
-# Importing tables
+# Enable Android new tables
 
 (See the Osquery documentation : https://osquery.readthedocs.io/en/stable/development/creating-tables/).
 
@@ -73,3 +73,6 @@ Finally run CMake :
 
 You will find more informations on this post: https://github.com/osquery/osquery/issues/7144
 
+# Disable useless tables for Android
+
+As you noticed, we chose to deploy Osquery on Android as it is done for a GNU-Linux operating system. It means several tables, *.cpp* files and dependencies are imported during the building process. There are different way to disable these useless files for Android. It is possible for instance to remove or comment the tables chosen in *osquery/specs/CMakeLists.txt*, and in *osquery/osquery/tables/linux/CMakeLists.txt*.
