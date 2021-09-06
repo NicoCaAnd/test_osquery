@@ -9,7 +9,7 @@ With some changes that have been merged, it is possible to build Osquery as an e
 All you need is to get Osquery code from its official Github repository, and add one option when running CMake for the compilation. 
 
 It is important to note that Android **IS NOT officialy supported by the Osquery project**. Here it is just a proposal for **experimental purposes**.
-We noted that, without modification, the binary built runs on a ARM64 Android system (with a recent Linux Kernel version >=4.9), and many GNU-Linux tables are available. 
+We noted that, without modifying the code, the binary built runs on a ARM64 Android system (with a recent Linux Kernel version >=4.9), and many GNU-Linux tables are available. 
 
 Studying Android features and following the Osquery documentation, we can make some specific Android tables.
 To get some relevant information on Android system, we made 3 types of tables : 
