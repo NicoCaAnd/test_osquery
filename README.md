@@ -70,5 +70,6 @@ Now we must indicate to CMake it will have import these files. In the file *osqu
 
 Finally run CMake :
 `cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
+
 You will find more informations on this post: https://github.com/osquery/osquery/issues/7144
 
