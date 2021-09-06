@@ -17,20 +17,6 @@ To get some relevant information on Android system, we made 3 types of tables :
 - one type parses *.db* files ;
 - and an other type uses binaries on the device (such as *dumpsys* or *logcat*) and parses the output to get the data needed.
 
-# Importing tables
-
-(See the Osquery documentation : https://osquery.readthedocs.io/en/stable/development/creating-tables/).
-
-Let's say we created a table called "androidTable". It means there are 2 files : *androidTable.cpp* that describes the way the collection of data is made and *androidTable.table* that describes the specifications.
-
-We need first to put these files at the correct locations. The *.cpp* file needs to be put here : *osquery/osquery/tables/system/linux/androidTable.cpp*. The *.table* file needs to be put here : *osquery/specs/linux/androidTable.table*.
-
-Now we must indicate to CMake it will have import these files. In the file *osquery/osquery/tables/linux/CMakeLists.txt*, add "linux/androidTable.cpp" in the list within *if(DEFINED PLATFORM_LINUX) list(APPEND source_files ... )*. Also change *osquery/specs/CMakeLists.txt* adding "linux/androidTable.table" in the function *set(platform_dependent_spec_files ...)*.
-
-Finally run CMake :
-`cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
-You will find more informations on this post: https://github.com/osquery/osquery/issues/7144
-
 # Contents of this repository
 
 In this repository, you will find the *.cpp* and *.table* files that represent Osquery tables for Android.
@@ -72,4 +58,17 @@ Gives some information about Chrome cookies reading a database file.
 
 ![Capture_chrome_cookies](https://user-images.githubusercontent.com/85172899/131815569-a7613e9d-44b6-423a-bf50-3bcb7de6c982.PNG)
 
+# Importing tables
+
+(See the Osquery documentation : https://osquery.readthedocs.io/en/stable/development/creating-tables/).
+
+Let's say we created a table called "androidTable". It means there are 2 files : *androidTable.cpp* that describes the way the collection of data is made and *androidTable.table* that describes the specifications.
+
+We need first to put these files at the correct locations. The *.cpp* file needs to be put here : *osquery/osquery/tables/system/linux/androidTable.cpp*. The *.table* file needs to be put here : *osquery/specs/linux/androidTable.table*.
+
+Now we must indicate to CMake it will have import these files. In the file *osquery/osquery/tables/linux/CMakeLists.txt*, add "linux/androidTable.cpp" in the list within *if(DEFINED PLATFORM_LINUX) list(APPEND source_files ... )*. Also change *osquery/specs/CMakeLists.txt* adding "linux/androidTable.table" in the function *set(platform_dependent_spec_files ...)*.
+
+Finally run CMake :
+`cmake -DOSQUERY_TOOLCHAIN_SYSROOT=/usr/local/osquery-toolchain -DSTATICONLY=true ..`
+You will find more informations on this post: https://github.com/osquery/osquery/issues/7144
 
