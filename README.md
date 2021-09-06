@@ -74,4 +74,4 @@ You will find more informations on this post: https://github.com/osquery/osquery
 
 # Disable useless tables for Android
 
-As you noticed, we chose to deploy Osquery on Android as it is done for a GNU-Linux operating system. It means several tables, *.cpp* files and dependencies are imported during the building process that are not usefull for Android. There are different way to disable these useless files. It is possible for instance to remove or comment these tables in *osquery/specs/CMakeLists.txt*, and in *osquery/osquery/tables/linux/CMakeLists.txt*.
+As you noticed, we chose to deploy Osquery on Android as it is done for a GNU-Linux operating system. It means several tables, *.cpp* files and dependencies are imported during the building process that are not usefull for Android. There are different ways to disable these useless files. It is possible for instance to remove or comment these tables in *osquery/specs/CMakeLists.txt*, and in *osquery/osquery/tables/linux/CMakeLists.txt*.
