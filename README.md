@@ -19,7 +19,7 @@ To get some relevant information on Android system, we made 3 types of tables :
 
 # Contents of this repository
 
-In this repository, you will find the *.cpp* and *.table* files that represent Osquery tables for Android.
+In this repository, you will find some *.cpp* and *.table* files that represent Osquery tables for Android.
 The *.cpp* files describe the way the collect of data is done, et and *.table* files provide the specifications for each *.cpp* file.
 
 # List of tables
