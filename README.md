@@ -2,7 +2,6 @@ This repository deals with Osquery table's files that will permit to collect dat
 
 # Description and objectives
 
-Osquery is a multiplatform tool that collects data from the system. 
 Android **IS NOT officialy supported by the Osquery project**. Here it is just a proposal for **experimental purposes**.
 
 With some changes that have been merged, it is possible to build Osquery as an executable file that will run above the Android Java layer, at the system level on the device. 
